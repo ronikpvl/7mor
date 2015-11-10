@@ -7,10 +7,16 @@ use yii\db\ActiveRecord;
 
 class Structure extends ActiveRecord
 {
-    public function get_data(){
-       // $structure = new Structure();
 
-        //return $structure;
+    /*
+    public $title;
+    public $name;
+
+    public function rules()
+    {
+        return [
+            [['name', 'title'], 'required'],
+        ];
     }
-
+    */
 }

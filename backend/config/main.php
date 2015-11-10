@@ -30,7 +30,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
-            'baseUrl' => '/',
+            //'baseUrl' => '/',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
         ],

@@ -2,7 +2,10 @@
 
 /* @var $this yii\web\View */
 
+use \yii\bootstrap\Html;
+
 $this->title = 'Структура сайта';
+
 ?>
 <div class="site-index">
     <table class="table table-striped">
@@ -28,8 +31,8 @@ $this->title = 'Структура сайта';
 
                 </td>
                 <td>
-                    <?=\yii\bootstrap\Html::a('Изменить', ['structure/edit', 'item_id' => $item->id])?>
-                    <?=\yii\bootstrap\Html::a('Удалить', ['structure/delete', 'item_id' => $item->id], ['onclick' => 'confirm("Удалить раздел?")'])?>
+                    <?=Html::a('Изменить', ['structure/edit', 'item_id' => $item->id])?>
+                    <?=Html::a('Удалить', ['structure/delete', 'item_id' => $item->id], ['onclick' => 'confirm("Удалить раздел?")'])?>
                 </td>
             </tr>
         <?php endforeach; ?>

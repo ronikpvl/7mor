@@ -4,7 +4,6 @@ namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use common\models\LoginForm;
 use yii\filters\VerbFilter;
 use backend\models\Structure;
 
@@ -16,8 +15,7 @@ class StructureController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors(){
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -27,7 +25,7 @@ class StructureController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'edit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -45,8 +43,7 @@ class StructureController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
-    {
+    public function actions(){
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -54,12 +51,22 @@ class StructureController extends Controller
         ];
     }
 
-    public function actionIndex()
-    {
+    public function actionIndex(){
         $structure_items = Structure::find()->all();
 
         return $this->render('index', [
             'structure_items' => $structure_items
+        ]);
+    }
+
+    public function actionEdit(){
+        $request = Yii::$app->request;
+        $item_id = $request->get('item_id');
+
+        $item_data = Structure::findOne($item_id);
+
+        return $this->render('edit', [
+            'item_data' => $item_data
         ]);
     }
 }
